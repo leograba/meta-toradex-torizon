@@ -22,6 +22,7 @@ Start with the machine-specific build instructions below:
 | :----------------- | :------------------------------------------ | :------------------------------------------- |
 | Texas Instruments  | AM62x/AM62L/AM62P SK EVM and BeagleY-AI     | [README-ti.md](./docs/README-ti.md)          |
 | NXP                | i.MX95 Verdin EVK and FRDM i.MX93           | [README-nxp.md](./docs/README-nxp.md)        |
+| Raspberry Pi       | Raspberry Pi 5                              | [README-rpi.md](./docs/README-rpi.md)        |
 | STMicroelectronics | STM32MP1/STM32MP2                           | [README-stm32mp.md](./docs/README-stm32mp.md)|
 | Renesas            | RZ/V2L EVKIT                                | [README-rzv2l.md](./docs/README-rzv2l.md)    |
 | Intel              | x86-64                                      | [README-x86.md](./docs/README-x86.md)        |
