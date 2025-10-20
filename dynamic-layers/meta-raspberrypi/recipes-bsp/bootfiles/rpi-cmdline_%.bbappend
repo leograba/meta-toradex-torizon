@@ -1,0 +1,5 @@
+CMDLINE_ROOT_PARTITION:raspberrypi5 = "LABEL=otaroot"
+CMDLINE_SERIAL:raspberrypi5 = "console=tty1 console=serial0,115200"
+CMDLINE:append:raspberrypi5 = " quiet logo.nologo vt.global_cursor_default=0 plymouth.ignore-serial-consoles splash fbcon=map:10"
+CMDLINE_IFNAMES:raspberrypi5 = "net.ifnames=0"
+CMDLINE_ROOT_FSTYPE:raspberrypi5 = "rootfstype=ext4"

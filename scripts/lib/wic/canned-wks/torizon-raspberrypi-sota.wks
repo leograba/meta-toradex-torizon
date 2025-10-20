@@ -1,0 +1,5 @@
+# short-description: Create OTA-enabled SD card image for Raspberry Pi boards
+# long-description: Creates a partitioned SD card image with OSTree physical
+# sysroot as a payload. Boot files are located in the first vfat partition.
+part --source bootimg-partition --fstype=vfat --label boot --active --align 2048 --use-uuid --fixed-size 256M
+part / --source otaimage --ondisk mmcblk --fstype=ext4 --align 4096
