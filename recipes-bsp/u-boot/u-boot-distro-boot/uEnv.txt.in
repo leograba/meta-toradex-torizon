@@ -2,6 +2,7 @@ kernel_image_type=@@KERNEL_IMAGETYPE@@
 overlays_file="overlays.txt"
 otaroot=@@OTAROOT_PARTITION_NUMBER@@
 fitconf_fdt_overlays="@@FITCONF_FDT_OVERLAYS@@"
+fitconf_name=@@FIT_DEFAULT_CONFIGURATION@@
 
 set_bootargs=env set bootcmd_args env set bootargs ${defargs} root=@@BOOTARG_ROOT@@ rootfstype=ext4 ${bootargs} ${tdxargs}
 
@@ -30,7 +31,9 @@ apply_overlays=if test ${kernel_image_type} = "fitImage"; then \
                    env set fdt_resize true; \
                    for overlay_file in ${fdt_overlays}; do \
                        echo "Applying Overlay: ${overlay_file}"; \
-                       env set fitconf_fdt_overlays "${fitconf_fdt_overlays}"#conf-"${overlay_file}"; \
+                       env set fitconf_tmp_over conf-overlays_${overlay_file}; \
+                       setexpr fitconf_tmp_over gsub "/" "_" "${fitconf_tmp_over}"; \
+                       env set fitconf_fdt_overlays "${fitconf_fdt_overlays}"#${fitconf_tmp_over}; \
                    done; \
                else \
                    fdt addr ${fdt_addr_r} && fdt resize 0x20000 && \
@@ -62,9 +65,21 @@ fi || true
 
 set_fdt_path=if test -n "${fdtdir}"; then \
                 env set fdt_path /boot${fdtdir}/${fdtfile}; \
-             else \
-                env set fdt_path /boot${fdt_file}; \
-             fi || true
+            else \
+               env set fdt_path /boot${fdt_file}; \
+            fi || true
+
+sanitize_fit_conf=if test ${kernel_image_type} = "fitImage"; then \
+                     if test -z "${fitconf_name}" || test "${fitconf_name}" = "conf-"; then \
+                         if test -n "${fdtdir}"; then \
+                             env set fitconf_tmp ${fdtdir}/${fdtfile}; \
+                         else \
+                             env set fitconf_tmp ${fdtfile}; \
+                         fi; \
+                         setexpr fitconf_tmp gsub "/" "_" "${fitconf_tmp}"; \
+                         env set fitconf_name conf-${fitconf_tmp}; \
+                     fi; \
+                  fi || true
 
 bootcmd_dtb=if test ${kernel_image_type} != "fitImage"; then \
                 load ${devtype} ${devnum}:${otaroot} ${fdt_addr_r} ${fdt_path}; \
@@ -99,11 +114,8 @@ board_fixups=if test "${board}" = "verdin-imx8mm"; then \
 
 bootcmd_boot=if test ${bootscript_debug} != 1; then \
                  if test ${kernel_image_type} = "fitImage"; then \
-                     if test -n "${fdtdir}"; then \
-                         bootm ${fitimage_addr_r}#conf-@@KERNEL_DTB_PREFIX@@${fdtfile}${fitconf_fdt_overlays} ; \
-                     else \
-                         bootm ${fitimage_addr_r}#conf-@@KERNEL_DTB_PREFIX@@${fdt_file}${fitconf_fdt_overlays} ; \
-                     fi; \
+                     run sanitize_fit_conf; \
+                     bootm ${fitimage_addr_r}#${fitconf_name}${fitconf_fdt_overlays} ; \
                  else \
                      @@KERNEL_BOOTCMD@@ ${kernel_addr_r} ${ramdisk_addr_r}:${ramdisk_size} ${fdt_addr_r}; \
                  fi; \

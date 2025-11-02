@@ -10,8 +10,8 @@ PREFERRED_RPROVIDER_network-configuration = "networkmanager"
 VIRTUAL-RUNTIME_network_manager = "networkmanager"
 IMAGE_INSTALL:remove = " connman connman-systemd connman-client network-configuration"
 
-UBOOT_BOOT_PARTITION_NUMBER = "1"
 OTAROOT_PARTITION_NUMBER = "2"
+UBOOT_BOOT_PARTITION_NUMBER = "${OTAROOT_PARTITION_NUMBER}"
 
 IMAGE_FSTYPES:append = " wic"
 

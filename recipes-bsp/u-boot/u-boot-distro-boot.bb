@@ -223,6 +223,7 @@ UBOOT_BOOT_PARTITION_NUMBER ?= "1"
 OTAROOT_PARTITION_NUMBER ?= "1"
 UENV_EXTRA_CONFIGS ?= "true"
 BOOTARG_ROOT ?= "LABEL=otaroot"
+FIT_DEFAULT_CONFIGURATION ??= "${@'' if not d.getVar('KERNEL_DEVICETREE') else 'conf-' + d.getVar('KERNEL_DEVICETREE').split()[0].replace('/', '_')}"
 
 do_compile() {
     sed -e 's/@@UBOOT_BOOT_PARTITION_NUMBER@@/${UBOOT_BOOT_PARTITION_NUMBER}/' \
@@ -240,6 +241,7 @@ do_compile() {
         -e 's/@@KERNEL_IMAGETYPE@@/${KERNEL_IMAGETYPE}/' \
         -e 's/@@KERNEL_DTB_PREFIX@@/${DTB_PREFIX}/' \
         -e 's/@@FITCONF_FDT_OVERLAYS@@/${FITCONF_FDT_OVERLAYS}/' \
+        -e 's/@@FIT_DEFAULT_CONFIGURATION@@/${FIT_DEFAULT_CONFIGURATION}/' \
         -e 's/@@BOOTARG_ROOT@@/${BOOTARG_ROOT}/' \
         ${WORKDIR}/uEnv.txt.in > ${WORKDIR}/uEnv.txt.temp
 
