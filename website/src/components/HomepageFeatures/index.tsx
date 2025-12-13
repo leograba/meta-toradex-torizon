@@ -5,14 +5,14 @@ import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  icon: string;
   description: ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [
   {
     title: 'Container Runtime',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    icon: '📦',
     description: (
       <>
         Torizon OS features a container runtime, allowing you to deploy and manage
@@ -22,7 +22,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Secure OTA Updates',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    icon: '🔒',
     description: (
       <>
         Built-in support for secure remote over-the-air (OTA) updates ensures your
@@ -32,7 +32,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Multiple Platform Support',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    icon: '🖥️',
     description: (
       <>
         Support for Toradex hardware and third-party BSPs including TI, NXP, STM32,
@@ -42,11 +42,11 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, icon, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <div style={{fontSize: '4rem', marginBottom: '1rem'}}>{icon}</div>
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
