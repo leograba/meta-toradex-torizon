@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <rect width="100" height="100" fill="#4CAF50" rx="10"/>
-  <text x="50" y="70" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="white" text-anchor="middle">T</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Background rounded square -->
+  <rect width="120" height="120" fill="#4CAF50" rx="15"/>
+  <!-- Stylized T letter -->
+  <path d="M 30 35 L 90 35 L 90 50 L 68 50 L 68 95 L 52 95 L 52 50 L 30 50 Z" fill="white"/>
 </svg>
