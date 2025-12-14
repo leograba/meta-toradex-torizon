@@ -1,0 +1,37 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  /* Torizon primary green color */
+  --ifm-color-primary: #4CAF50;
+  --ifm-color-primary-dark: #45a049;
+  --ifm-color-primary-darker: #429846;
+  --ifm-color-primary-darkest: #368a3d;
+  --ifm-color-primary-light: #5cb85f;
+  --ifm-color-primary-lighter: #66bb6a;
+  --ifm-color-primary-lightest: #81c784;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  
+  /* Torizon dark footer/header color */
+  --ifm-footer-background-color: #3c4858;
+  --ifm-navbar-background-color: #ffffff;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #66bb6a;
+  --ifm-color-primary-dark: #5cb85f;
+  --ifm-color-primary-darker: #4CAF50;
+  --ifm-color-primary-darkest: #45a049;
+  --ifm-color-primary-light: #81c784;
+  --ifm-color-primary-lighter: #8bc98c;
+  --ifm-color-primary-lightest: #a5d6a7;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  
+  --ifm-footer-background-color: #2d3748;
+}

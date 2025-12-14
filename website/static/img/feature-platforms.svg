@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
+  <!-- Multiple Platform illustration -->
+  <defs>
+    <linearGradient id="platformGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#45a049;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="200" fill="#f5f5f5" rx="10"/>
+  
+  <!-- Desktop/Computer -->
+  <rect x="50" y="70" width="70" height="50" fill="url(#platformGrad)" rx="3"/>
+  <rect x="55" y="75" width="60" height="35" fill="white" opacity="0.3" rx="2"/>
+  <rect x="75" y="120" width="30" height="5" fill="#3c4858" rx="1"/>
+  <rect x="65" y="125" width="50" height="3" fill="#3c4858" rx="1"/>
+  
+  <!-- Mobile/Tablet -->
+  <rect x="140" y="60" width="40" height="65" fill="url(#platformGrad)" rx="3"/>
+  <rect x="145" y="65" width="30" height="50" fill="white" opacity="0.3" rx="2"/>
+  <circle cx="160" cy="120" r="3" fill="white" opacity="0.5"/>
+  
+  <!-- Embedded device/Board -->
+  <rect x="200" y="75" width="60" height="45" fill="url(#platformGrad)" rx="3"/>
+  <rect x="205" y="80" width="50" height="10" fill="white" opacity="0.3" rx="1"/>
+  <rect x="205" y="95" width="50" height="10" fill="white" opacity="0.3" rx="1"/>
+  <rect x="205" y="110" width="50" height="5" fill="white" opacity="0.3" rx="1"/>
+  <!-- Pins/connectors -->
+  <rect x="200" y="85" width="2" height="5" fill="#3c4858"/>
+  <rect x="205" y="85" width="2" height="5" fill="#3c4858"/>
+  <rect x="210" y="85" width="2" height="5" fill="#3c4858"/>
+  
+  <!-- Connection lines -->
+  <path d="M 120 95 L 140 85" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,3" opacity="0.6"/>
+  <path d="M 180 85 L 200 90" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,3" opacity="0.6"/>
+</svg>

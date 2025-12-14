@@ -50,6 +50,35 @@ If your machine is not listed above or you prefer a manual setup, you can follow
 - `torizon-minimal`
 - `torizon-podman` (**experimental**)
 
+Documentation Website
+=====================
+This repository includes a documentation website built with Docusaurus. The website is automatically deployed to GitHub Pages and can be viewed at:
+
+https://leograba.github.io/meta-toradex-torizon/
+
+### Local Development
+
+To run the documentation website locally:
+
+```bash
+cd website
+npm install
+npm start
+```
+
+This will start a local development server at http://localhost:3000.
+
+### Building the Website
+
+To build the website for production:
+
+```bash
+cd website
+npm run build
+```
+
+The static files will be generated in the `website/build` directory.
+
 Reporting Issues
 ================
 If you encounter any issues when using or developing Torizon OS, you can open a new issue in this repository's issue tracker or create a new Technical Support topic in the [Toradex Developer Community](https://community.toradex.com/).
